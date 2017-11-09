@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import '../src/styles/index.css';
+import App from '../src/components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 //Apollo client configuration
@@ -16,15 +16,15 @@ const httpLink = new HttpLink({ uri: 'https://api.graph.cool/simple/v1/cj9s7op95
 //Apollo client interface configuration
 const client = new ApolloClient({
   link: httpLink,
-  cache: InMemoryCache()
+  cache: new InMemoryCache()
 });
 
 //REactDOM reconfigured for react-apollo client
 
 ReactDOM.render(
-  <ApolloClient client={client}>
+  <ApolloProvider client={client}>
     <App />
-  </ApolloClient>,
+  </ApolloProvider>,
   
   document.getElementById('root'));
 
