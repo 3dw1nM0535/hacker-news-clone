@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import '../src/styles/index.css';
 import App from '../src/components/App';
 import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from 'react-router-dom';
 
 //Apollo client configuration
 import { ApolloProvider } from 'react-apollo';
@@ -22,9 +23,13 @@ const client = new ApolloClient({
 //REactDOM reconfigured for react-apollo client
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <BrowserRouter>
+
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+
+  </BrowserRouter>,
   
   document.getElementById('root'));
 
